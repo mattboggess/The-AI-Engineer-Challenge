@@ -52,11 +52,11 @@ Both commands assume the `OPENAI_API_KEY` environment variable is set in the she
 {
     "developer_message": "string",
     "user_message": "string",
-    "model": "gpt-4.1-mini",  // optional
-    "api_key": "your-openai-api-key"
+    "model": "gpt-4.1-mini"  // optional
 }
 ```
 - **Response**: Streaming text response
+- **Note**: The OpenAI API key must be set as the `OPENAI_API_KEY` environment variable on the server. It is not included in the request body.
 
 ### Health Check
 - **URL**: `/api/health`
@@ -76,6 +76,7 @@ The API is configured to accept requests from any origin (`*`). This can be modi
 ## Error Handling
 
 The API includes basic error handling for:
+- Missing `OPENAI_API_KEY` environment variable (returns 500 with error message)
 - Invalid API keys
 - OpenAI API errors
 - General server errors
